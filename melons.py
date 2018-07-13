@@ -1,6 +1,7 @@
 """Classes for melon orders."""
 
 from random import randint
+from datetime import datetime
 
 
 class AbstractMelonOrder(object):
@@ -40,6 +41,17 @@ class AbstractMelonOrder(object):
 
     def get_base_price(self):
         """ Determine base price based on 'Splurge Pricing' """
+
+        # grab current time of order
+        order_time = datetime.now()
+
+        # figure out if it is rush hour
+        if (order_time.weekday() >= 0 and order_time.weekday() <= 4 and 
+            order_time.hour >= 8 and order_time.hour <= 11):
+            # it's rush hour!! :C
+            return randint(5, 9) + 4
+
+        # it's NOT rush hour
         return randint(5, 9)
 
 
