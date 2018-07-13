@@ -1,0 +1,3 @@
+# stuff we don't want on GitHub!
+*.pyc
+venv/
